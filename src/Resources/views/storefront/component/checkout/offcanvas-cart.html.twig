@@ -1,6 +1,7 @@
 {% sw_extends '@Storefront/storefront/component/checkout/offcanvas-cart.html.twig' %}
 {% set showMinimal = context.extensions['showMinimal'].get('show-minimal') ?? false %}
 {% set itemIdsAdded = context.extensions['showMinimal'].get('item-ids-added')  %}
+{% set crossSellingProductsGroupName =  context.extensions['showMinimal'].get('cross-selling-group-name')%}
 {% set crossSellingProducts = context.extensions['crossSellingProducts'] %}
 {% set mLineItem = page.cart.lineItems|first %}
 

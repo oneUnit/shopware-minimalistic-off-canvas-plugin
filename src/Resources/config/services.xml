@@ -6,9 +6,6 @@
 
     <services>
 
-        <service id="MinimalisticOffCanvas\Core\Content\OffCanvas\SalesChannel\ExampleRoute">
-            <argument type="service" id="product.repository"/>
-        </service>
 
         <service id="MinimalisticOffCanvas\Core\Content\SalesChannel\Checkout\CheckoutRouteDecorator" decorates="Shopware\Storefront\Controller\CheckoutController" public="true">
             <argument type="service" id="MinimalisticOffCanvas\Core\Content\SalesChannel\Checkout\CheckoutRouteDecorator.inner"/>

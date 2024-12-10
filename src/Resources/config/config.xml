@@ -17,6 +17,8 @@
             <label>Default Cross Selling Group Position</label>
             <label lang="de-DE">Default Position der Cross-Selling-Gruppe</label>
         </input-field>
+
+
     </card>
 
 </config>

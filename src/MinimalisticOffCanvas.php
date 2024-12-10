@@ -46,7 +46,9 @@ class MinimalisticOffCanvas extends Plugin
                                 'de-DE' => 'Cross Selling Group position zu nutzen',
                                 Defaults::LANGUAGE_SYSTEM => "Cross Selling Group position to use"
                             ],
-                            'customFieldPosition' => 1
+                            'customFieldPosition' => 1,
+                            'defaultValue' => null,
+                            'customFieldRequired' => false,
                         ]
                     ]
                 ],
