@@ -1,0 +1,27 @@
+{
+    "name": "swag/minimalistic-off-canvas",
+    "description": "swag/minimalistic-off-canvas",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "shopware/core": "~6.6.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "MinimalisticOffCanvas\\MinimalisticOffCanvas",
+        "label": {
+            "de-DE": "Minimalistic Off Canvas",
+            "en-GB": "Minimalistic Off Canvas"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "MinimalisticOffCanvas\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MinimalisticOffCanvas\\Tests\\": "tests/"
+        }
+    }
+}

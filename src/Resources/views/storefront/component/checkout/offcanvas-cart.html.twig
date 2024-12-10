@@ -1,0 +1,49 @@
+{% sw_extends '@Storefront/storefront/component/checkout/offcanvas-cart.html.twig' %}
+{% set showMinimal = context.extensions['showMinimal'].get('show-minimal') ?? false %}
+{% set itemIdsAdded = context.extensions['showMinimal'].get('item-ids-added')  %}
+{% set crossSellingProducts = context.extensions['crossSellingProducts'] %}
+{% set mLineItem = page.cart.lineItems|first %}
+
+
+{% block component_offcanvas_cart_items %}
+    {%- if showMinimal -%}
+    {# @deprecated tag:v6.7.0 - Line items wrapper will be `<ul>` element instead of `<div>` #}
+    {%- if feature('ACCESSIBILITY_TWEAKS') -%}
+        <ul class="offcanvas-cart-items list-unstyled">
+    {%- else -%}
+        <div class="offcanvas-cart-items" role="list">
+    {%- endif -%}
+        {% for lineItem in page.cart.lineItems %}
+            {%- if lineItem.id in itemIdsAdded  -%}
+                {% set mLineItem = services.cart.products.get(lineItem.product_id)  %}
+            {% block component_offcanvas_cart_item %}
+                {% sw_include '@Storefront/storefront/component/line-item/line-item.html.twig' with {
+                    displayMode: 'offcanvas',
+                    redirectTo: 'frontend.cart.offcanvas'
+                } %}
+            {% endblock %}
+            {%- endif  -%}
+        {% endfor %}
+    {# @deprecated tag:v6.7.0 - Line items wrapper will be `<ul>` element instead of `<div>` #}
+    {%- if not feature('ACCESSIBILITY_TWEAKS') -%}
+        </div>
+    {%- else -%}
+        </ul>
+    {%- endif -%}
+
+        {% if crossSellingProducts|length > 0 %}
+            <h2>{{ crossSellingProductsGroupName }}</h2>
+        {% for product in crossSellingProducts %}
+            <div class="cms-listing-row pb-md-5">
+            {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
+                'product': product.product,
+                'layout': 'offcanvas-card-product'
+            } %}
+        </div>
+{% endfor %}
+        {% endif %}
+
+    {%- else -%}
+        {{ parent() }}
+    {%- endif -%}
+{% endblock %}
