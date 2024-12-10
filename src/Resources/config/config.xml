@@ -6,11 +6,6 @@
     <card>
         <title>Minimal configuration</title>
 
-        <input-field type="bool">
-            <name>active</name>
-            <label>Active</label>
-            <label lang="de-DE">Aktiviert</label>
-        </input-field>
 
         <input-field type="int">
             <name>defaultCrossSellingGroupPosition</name>

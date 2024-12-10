@@ -25,23 +25,23 @@
             {% endblock %}
             {%- endif  -%}
         {% endfor %}
-    {# @deprecated tag:v6.7.0 - Line items wrapper will be `<ul>` element instead of `<div>` #}
-    {%- if not feature('ACCESSIBILITY_TWEAKS') -%}
-        </div>
-    {%- else -%}
-        </ul>
-    {%- endif -%}
+        {# @deprecated tag:v6.7.0 - Line items wrapper will be `<ul>` element instead of `<div>` #}
+        {%- if not feature('ACCESSIBILITY_TWEAKS') -%}
+            </div>
+        {%- else -%}
+            </ul>
+        {%- endif -%}
 
         {% if crossSellingProducts|length > 0 %}
             <h2>{{ crossSellingProductsGroupName }}</h2>
-        {% for product in crossSellingProducts %}
-            <div class="cms-listing-row pb-md-5">
-            {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
-                'product': product.product,
-                'layout': 'offcanvas-card-product'
-            } %}
-        </div>
-{% endfor %}
+            {% for product in crossSellingProducts %}
+                <div class="cms-listing-row pb-md-5">
+                    {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
+                        'product': product.product,
+                        'layout': 'offcanvas-card-product'
+                    } %}
+                </div>
+            {% endfor %}
         {% endif %}
 
     {%- else -%}
